@@ -9,16 +9,18 @@ import ImagePopup from './ImagePopup';
 function App(props) {
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState({});
+  
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
   }
 
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   function handleAddPlaceClick() {
     setIsAddPlacePopupOpen(true);
   }
 
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
   }
@@ -27,10 +29,9 @@ function App(props) {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
-    setSelectedCard('');
+    setSelectedCard({});
   }
 
-  const [selectedCard, setSelectedCard] = React.useState('');
   function handleCardClick(cardForPopup) {
     setSelectedCard(cardForPopup);
   }
@@ -41,13 +42,13 @@ function App(props) {
       <Main class="content" onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} />
       <Footer class="footer" />
       <PopupWithForm title="Редактировать профиль" name="profile" buttonTitle="Сохранить" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
-        <input id="name" className="popup__input-text" type="text" name="name" placeholder="Имя профиля" required minlength="2" maxlength="40" />
+        <input id="name" className="popup__input-text" type="text" name="name" placeholder="Имя профиля" required minLength="2" maxLength="40" />
         <span className="popup__input-text-error name-error"></span>
-        <input id="descrip" className="popup__input-text" type="text" name="about" placeholder="Описание профиля" required minlength="2" maxlength="200" />
+        <input id="descrip" className="popup__input-text" type="text" name="about" placeholder="Описание профиля" required minLength="2" maxLength="200" />
         <span className="popup__input-text-error descrip-error"></span>
       </PopupWithForm>
       <PopupWithForm title="Новое место" name="photo" buttonTitle="Создать" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
-        <input id="mesto" className="popup__input-text" type="text" name="name" placeholder="Название" required minlength="2" maxlength="30" />
+        <input id="mesto" className="popup__input-text" type="text" name="name" placeholder="Название" required minLength="2" maxLength="30" />
         <span className="popup__input-text-error mesto-error"></span>
         <input id="link" className="popup__input-text" type="url" name="link" placeholder="Ссылка на картинку" required />
         <span className="popup__input-text-error link-error"></span>

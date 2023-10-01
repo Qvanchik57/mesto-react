@@ -1,6 +1,7 @@
 function ImagePopup(props) {
+    console.log(props);
     return (
-        <div className={`popup popup-${props.card.name} ${props.isOpen ? 'popup_open' : ''}`}>
+        <div className={`popup ${props.card.name ? 'popup_open' : ''}`}>
             <div className="discovery__container">
             <img className="discovery__img" src={props.card.link} alt={props.card.name}/>
             <p className="discovery__description">{props.card.name}</p>

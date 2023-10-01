@@ -6,7 +6,7 @@ function Card({card, onCardClick}) {
     }  
 
     return (
-        <li className="photos__element" key={card._id}>
+        <li className="photos__element">
             <img className="photos__image" src={card.link} style={{ backgroundImage: `url(${card.link})` }} alt={card.name} onClick={handleClick}/>
             <button className="photos__button-delete"></button>
             <div className="photos__box">
