@@ -1,0 +1,12 @@
+.page {
+  font-family: "Inter", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  color: #fff;
+  max-width: 880px;
+  margin: 0 auto;
+  background: #000;
+}
+
+#root {
+  background: #000;
+}
