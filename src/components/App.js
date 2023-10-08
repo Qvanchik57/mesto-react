@@ -60,13 +60,19 @@ function App(props) {
         .then((newCard) => {
           setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
         })
+        .catch((err) => {
+          console.log(err);
+        })
     }
     
     else {
       api.putLike(card._id)
       .then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-      });
+      })
+      .catch((err) => {
+        console.log(err);
+      })
     }
   }
 
@@ -74,12 +80,15 @@ function App(props) {
     let newCards = {};
     api.deleteCard(card._id)
       .then((cardDel) => {
-        newCards = cards.filter(elem => {
-          if (elem._id != card._id) {
-            return elem;
-          }
-        });
-        setCards(newCards);
+        setCards(newCards = cards.filter(elem => {
+            if (elem._id != card._id) {
+              return elem;
+            }
+          })
+        )
+      })
+      .catch((err) => {
+        console.log(err);
       })
   } 
 
@@ -87,13 +96,16 @@ function App(props) {
     api.editUser(dataProfile)
       .then((data) => {
         setCurrentUser(data);
-      });
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   function handleUpdateAvatar(dataAvatar) {
     api.patchAvatar(dataAvatar)
       .then((data) => {
-        currentUser.avatar = dataAvatar.avatar;
+        setCurrentUser(data);
       })
       .catch((err) => {
         console.log(err);
