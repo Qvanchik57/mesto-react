@@ -77,10 +77,9 @@ function App(props) {
   }
 
   function handleDeleteClick(card) {
-    let newCards = {};
     api.deleteCard(card._id)
       .then((cardDel) => {
-        setCards(newCards = cards.filter(elem => {
+        setCards((prevState) => prevState.filter(elem => {
             if (elem._id != card._id) {
               return elem;
             }
